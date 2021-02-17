@@ -36,7 +36,11 @@ alpha.diversity <- rbind(shannon.wiener, simpson, inverse.simpson, S, pielou)
 # 选择出hsct组和non组
 alpha.diversity.hsct <- alpha.diversity[ , c(4, 5, 6, 10)]
 alpha.diversity.non <- alpha.diversity[ , c(1, 2, 3, 7, 8, 9)]
-# 使用Mann-Whitney U非参数检验比较各个α多样性指标
+# 使用Mann-Whitney U非参数检验比较shannon.wiener。
+fivenum(alpha.diversity.hsct[1, ])
+fivenum(alpha.diversity.non[1, ])
+wilcox.test(alpha.diversity.non[1, ], alpha.diversity.hsct[1, ])
+# 使用Mann-Whitney U非参数检验比较pielou。
 fivenum(alpha.diversity.hsct[5, ])
 fivenum(alpha.diversity.non[5, ])
 wilcox.test(alpha.diversity.non[5, ], alpha.diversity.hsct[5, ])
